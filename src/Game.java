@@ -22,12 +22,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		this.addKeyListener(this);
 	}
 	
-	public void tick() {
+	public void tick() { //verifica estado
 		player.tick();
 		
 		
 	}
-	public void render() {
+	public void render() { //desenha estado
 		BufferStrategy bufferStrategy = this.getBufferStrategy();
 		if(bufferStrategy == null) {
 			this.createBufferStrategy(3);
@@ -37,10 +37,9 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		graphics = bufferStrategy.getDrawGraphics();
 		
 		
-		
-		
-		
 		drawGraphic(0, 0, WIDTH, HEIGHT, Color.black);
+		
+		
 		
 		player.render(graphics);
 		
@@ -73,14 +72,13 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			player.setPlayerRight(true);
-		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+		}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			player.setPlayerLeft(true);
 		}
+		
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
 			player.setPlayerDown(true);
-		}
-		if(e.getKeyCode() == KeyEvent.VK_UP) {
+		}else if(e.getKeyCode() == KeyEvent.VK_UP) {
 			player.setPlayerUp(true);
 		}
 		

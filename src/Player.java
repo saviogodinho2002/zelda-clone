@@ -11,55 +11,36 @@ public class Player extends Rectangle {
 
 	public Player(int positionX, int positonY) {
 		super(positionX, positonY,32,32	);
-		playerPositionX = positionX;
-		playerPositionY = positonY;
-		playerWidth = 32;
-		playerHeight = 32;
 		playerSpeed = 4;
-		
-		
-		
 	}
 
 	public void tick() {
 		if(playerRight) {
-			playerPositionX+= playerSpeed;
+			this.x += playerSpeed;
 		}else if(playerLeft) {
-			playerPositionX -= playerSpeed;
+			this.x -= playerSpeed;
 		}
 		
 		if(playerDown) {
-			playerPositionY += playerSpeed;
+			this.y += playerSpeed;
 		}else if(playerUp) {
-			playerPositionY -= playerSpeed;
+			this.y -= playerSpeed;
 		}
 
 	}
 
 	public void render(Graphics graphics) {
 		graphics.setColor(Color.blue);
-		graphics.fillRect(playerPositionX, playerPositionY, playerWidth, playerHeight);
+		
+		graphics.fillRect(this.x, this.y, this.width, this.height );
+		
 
 	}
 
-	public int getPlayerWidth() {
-		return playerWidth;
-	}
 
-	public void setPlayerWidth(int playerWidth) {
-		this.playerWidth = playerWidth;
-	}
-
-	public int getPlayerHeight() {
-		return playerHeight;
-	}
-
-	public void setPlayerHeight(int playerHeight) {
-		this.playerHeight = playerHeight;
-	}
 
 	public boolean isPlayerRight() {
-		return playerRight;
+		return this.playerRight;
 	}
 
 	public void setPlayerRight(boolean playerRight) {
@@ -67,7 +48,7 @@ public class Player extends Rectangle {
 	}
 
 	public boolean isPlayerLeft() {
-		return playerLeft;
+		return this.playerLeft;
 	}
 
 	public void setPlayerLeft(boolean playerLeft) {
@@ -75,7 +56,7 @@ public class Player extends Rectangle {
 	}
 
 	public boolean isPlayerDown() {
-		return playerDown;
+		return this.playerDown;
 	}
 
 	public void setPlayerDown(boolean playerDown) {
@@ -83,7 +64,7 @@ public class Player extends Rectangle {
 	}
 
 	public boolean isPlayerUp() {
-		return playerUp;
+		return this.playerUp;
 	}
 
 	public void setPlayerUp(boolean playerUp) {
@@ -91,7 +72,7 @@ public class Player extends Rectangle {
 	}
 
 	public int getplayerSpeed() {
-		return playerSpeed;
+		return this.playerSpeed;
 	}
 
 	public void setplayerSpeed(int playerSpeed) {
