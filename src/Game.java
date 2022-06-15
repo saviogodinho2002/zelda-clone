@@ -12,18 +12,23 @@ public class Game extends Canvas implements Runnable, KeyListener{
 
 	public static int WIDTH = 480, HEIGHT = 480;
 	
-	public Graphics graphics;
-	public Player player;
+	private Graphics graphics;
+	private Player player;
+	private TileMap tileMap;
 	
 	public Game() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		
 		player = new Player(0, 0);
+		tileMap = new TileMap();
 		
 		this.addKeyListener(this);
 	}
 	
 	public void tick() { //verifica estado
 		player.tick();
+		tileMap.tick();
+		
 		
 		
 	}
@@ -42,6 +47,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		
 		
 		player.render(graphics);
+		
+		tileMap.render();
 		
 		bufferStrategy.show();
 		

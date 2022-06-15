@@ -5,9 +5,10 @@ import java.awt.Rectangle;
 public class Player extends Rectangle {
 	private int playerWidth, playerHeight;
 	private boolean playerRight, playerLeft, playerDown, playerUp;
-	private int playerPositionX, playerPositionY;
+	
 	
 	private int playerSpeed;
+	
 
 	public Player(int positionX, int positonY) {
 		super(positionX, positonY,32,32	);
@@ -32,7 +33,8 @@ public class Player extends Rectangle {
 	public void render(Graphics graphics) {
 		graphics.setColor(Color.blue);
 		
-		graphics.fillRect(this.x, this.y, this.width, this.height );
+		graphics.fillRect(this.x, this.y, this.width, this.height);
+
 		
 
 	}
