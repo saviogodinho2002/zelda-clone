@@ -5,6 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.function.LongBinaryOperator;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import javax.swing.JFrame;
 
@@ -19,15 +24,16 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public Game() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		
-		player = new Player(0, 0);
+		player = new Player(WIDTH/2, HEIGHT/2);
 		tileMap = new TileMap();
 		
 		this.addKeyListener(this);
 	}
 	
 	public void tick() { //verifica estado
-		player.tick();
 		tileMap.tick();
+		player.tick(tileMap);
+		
 		
 		
 		
@@ -44,11 +50,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		
 		drawGraphic(0, 0, WIDTH, HEIGHT, Color.black);
 		
-		
+		// como as setas do teclado
+		tileMap.render(graphics);
 		
 		player.render(graphics);
 		
-		tileMap.render();
+		
 		
 		bufferStrategy.show();
 		
@@ -61,16 +68,18 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while(true) {
-			System.out.println("Chamando game loop");
-			tick();
-			render();
-			try {
-				Thread.sleep(1000/60);
-			} catch (InterruptedException e) {
-				
-			}
-		}
+		
+		new Timer().scheduleAtFixedRate(
+				new TimerTask() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						tick();
+						render();
+						
+					}
+				}, 0, 1000/60);
 		
 	}
 

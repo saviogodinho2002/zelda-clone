@@ -15,16 +15,16 @@ public class Player extends Rectangle {
 		playerSpeed = 4;
 	}
 
-	public void tick() {
-		if(playerRight) {
+	public void tick(TileMap tileMap) {
+		if(playerRight && tileMap.isFree(this.x  + this.playerSpeed, this.y, this)) {
 			this.x += playerSpeed;
-		}else if(playerLeft) {
+		}else if(playerLeft && tileMap.isFree(this.x  - this.playerSpeed, this.y, this)) {
 			this.x -= playerSpeed;
 		}
 		
-		if(playerDown) {
+		if(playerDown && tileMap.isFree(this.x  , this.y + this.playerSpeed, this)) {
 			this.y += playerSpeed;
-		}else if(playerUp) {
+		}else if(playerUp && tileMap.isFree(this.x  , this.y - this.playerSpeed, this)) {
 			this.y -= playerSpeed;
 		}
 
