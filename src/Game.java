@@ -21,11 +21,13 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private Player player;
 	private TileMap tileMap;
 	
+	
 	public Game() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		
+		new SpriteSheetPlayer();
 		player = new Player(WIDTH/2, HEIGHT/2);
 		tileMap = new TileMap();
+		
 		
 		this.addKeyListener(this);
 	}
@@ -87,14 +89,18 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerRight);
 			player.setPlayerRight(true);
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerLeft);
 			player.setPlayerLeft(true);
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerBack);
 			player.setPlayerDown(true);
 		}else if(e.getKeyCode() == KeyEvent.VK_UP) {
+			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerFront);
 			player.setPlayerUp(true);
 		}
 		
