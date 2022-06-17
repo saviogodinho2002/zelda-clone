@@ -10,6 +10,7 @@ public class SpriteSheet {
 	public static BufferedImage spriteSheet;
 	public static BufferedImage playerFront,playerBack,playerLeft,playerRight;
 	public static BufferedImage wallTile;
+	public static BufferedImage enemyFront;
 	public SpriteSheet() {
 		try {
 			spriteSheet = ImageIO.read(this.getClass().getResource("/spritesheet.png"));
@@ -30,6 +31,8 @@ public class SpriteSheet {
 		playerLeft = affineTransformOp.filter(playerLeft, null);
 		
 		wallTile = this.getSprite(283, 238, 16, 16);
+		
+		enemyFront = this.getSprite(316, 237, 16, 16);
 		
 		
 	}

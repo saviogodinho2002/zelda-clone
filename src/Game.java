@@ -20,6 +20,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private Graphics graphics;
 	private Player player;
 	private TileMap tileMap;
+	private Enemy enemy;
 	
 	
 	public Game() {
@@ -27,19 +28,22 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		new SpriteSheet();
 		player = new Player(WIDTH/2, HEIGHT/2);
 		tileMap = new TileMap();
-		
+		enemy = new Enemy(400, 400);
 		
 		this.addKeyListener(this);
 	}
 	
 	public void tick() { //verifica estado
+		
 		tileMap.tick();
 		player.tick(tileMap);
+		enemy.tick(player);
 		
-		
-		
+		if(player.intersects(enemy))
+			System.exit(0);
 		
 	}
+	
 	public void render() { //desenha estado
 		BufferStrategy bufferStrategy = this.getBufferStrategy();
 		if(bufferStrategy == null) {
@@ -56,6 +60,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		tileMap.render(graphics);
 		
 		player.render(graphics);
+		
+		enemy.render(graphics);
 		
 		
 		
