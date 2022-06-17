@@ -8,10 +8,7 @@ public class Tile extends Rectangle{
 		 
 	}
 	 public void render(Graphics graphics) {
-		 graphics.setColor(Color.CYAN);
-		 graphics.fillRect(this.x, this.y, this.width, this.height);
-		 graphics.setColor(Color.black);
-		 graphics.drawRect(this.x, this.y, this.width, this.height);
+		 graphics.drawImage(SpriteSheet.wallTile,this.x,this.y, this.width,this.height,null);
 		  
 	 }
 	 public void tick() {

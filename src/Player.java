@@ -15,7 +15,7 @@ public class Player extends Rectangle {
 
 	public Player(int positionX, int positonY) {
 		super(positionX, positonY,32,32	);
-		currentPlayerSprite = SpriteSheetPlayer.playerFront;
+		currentPlayerSprite = SpriteSheet.playerFront;
 		playerSpeed = 4;
 	}
 

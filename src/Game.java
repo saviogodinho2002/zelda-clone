@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	
 	public Game() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		new SpriteSheetPlayer();
+		new SpriteSheet();
 		player = new Player(WIDTH/2, HEIGHT/2);
 		tileMap = new TileMap();
 		
@@ -89,18 +89,18 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerRight);
+			player.setCurrentPlayerSprite(SpriteSheet.playerRight);
 			player.setPlayerRight(true);
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerLeft);
+			player.setCurrentPlayerSprite(SpriteSheet.playerLeft);
 			player.setPlayerLeft(true);
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerBack);
+			player.setCurrentPlayerSprite(SpriteSheet.playerBack);
 			player.setPlayerDown(true);
 		}else if(e.getKeyCode() == KeyEvent.VK_UP) {
-			player.setCurrentPlayerSprite(SpriteSheetPlayer.playerFront);
+			player.setCurrentPlayerSprite(SpriteSheet.playerFront);
 			player.setPlayerUp(true);
 		}
 		

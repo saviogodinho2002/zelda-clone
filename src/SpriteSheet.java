@@ -6,10 +6,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class SpriteSheetPlayer {
+public class SpriteSheet {
 	public static BufferedImage spriteSheet;
 	public static BufferedImage playerFront,playerBack,playerLeft,playerRight;
-	public SpriteSheetPlayer() {
+	public static BufferedImage wallTile;
+	public SpriteSheet() {
 		try {
 			spriteSheet = ImageIO.read(this.getClass().getResource("/spritesheet.png"));
 		} catch (IOException error) {
@@ -18,14 +19,17 @@ public class SpriteSheetPlayer {
 		}
 		playerFront = this.getSprite(71, 11, 16, 16);
 		playerBack = this.getSprite(1, 11, 16, 16); 
-		playerLeft= this.getSprite(35, 11, 16, 16);
 		playerRight = this.getSprite(35, 11, 16, 16);
 		
+		playerLeft= playerRight;
+		
 		AffineTransform  affineTransform = AffineTransform.getScaleInstance(-1, 1);
-		affineTransform.translate(-16, -0);
+		affineTransform.translate(-16, 0);
 		AffineTransformOp affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 		
 		playerLeft = affineTransformOp.filter(playerLeft, null);
+		
+		wallTile = this.getSprite(283, 238, 16, 16);
 		
 		
 	}
